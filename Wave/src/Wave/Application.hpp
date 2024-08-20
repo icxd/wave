@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Wave/Core.hpp>
+#include <Wave/Events/ApplicationEvent.hpp>
 #include <Wave/Window.hpp>
 
 namespace wave {
@@ -11,6 +12,11 @@ public:
   virtual ~Application();
 
   void Run();
+
+  void OnEvent(Event &event);
+
+private:
+  bool onWindowClose(WindowCloseEvent &event);
 
 private:
   OwnRef<Window> m_window;

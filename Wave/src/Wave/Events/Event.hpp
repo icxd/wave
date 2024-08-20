@@ -1,6 +1,9 @@
 #pragma once
 
 #include <Wave/Core.hpp>
+#include <fmt/core.h>
+#include <fmt/format.h>
+#include <type_traits>
 #include <wavepch.h>
 
 namespace wave {
@@ -69,7 +72,7 @@ public:
 
   template <typename T> bool Dispatch(EventFn<T> fn) {
     if (m_event.GetEventType() == T::GetStaticType()) {
-      m_event.m_handled = func(*(T *)&m_event);
+      m_event.m_handled = fn(*(T *)&m_event);
       return true;
     }
 
@@ -80,8 +83,17 @@ private:
   Event &m_event;
 };
 
-inline std::ostream &operator<<(std::ostream &os, const Event &event) {
+} // namespace wave
+
+inline std::ostream &operator<<(std::ostream &os, const wave::Event &event) {
   return os << event.ToString();
 }
 
-} // namespace wave
+template <typename T>
+struct fmt::formatter<T,
+                      std::enable_if_t<std::is_base_of_v<wave::Event, T>, char>>
+    : fmt::formatter<std::string> {
+  auto format(const wave::Event &event, format_context &context) const {
+    return formatter<std::string>::format(event.ToString(), context);
+  }
+};
