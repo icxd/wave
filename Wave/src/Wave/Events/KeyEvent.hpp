@@ -1,7 +1,7 @@
 #pragma once
 
-#include <wave/Core.hpp>
-#include <wave/Events/Event.hpp>
+#include <Wave/Core.hpp>
+#include <Wave/Events/Event.hpp>
 #include <wavepch.h>
 
 namespace wave {

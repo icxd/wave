@@ -1,6 +1,6 @@
 #pragma once
 
-#include <wave/Application.hpp>
-#include <wave/Log.hpp>
+#include <Wave/Application.hpp>
+#include <Wave/Log.hpp>
 
-#include <wave/EntryPoint.hpp>
+#include <Wave/EntryPoint.hpp>

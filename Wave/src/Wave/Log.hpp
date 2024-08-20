@@ -1,9 +1,9 @@
 #pragma once
 
+#include <Wave/Core.hpp>
 #include <spdlog/fmt/ostr.h>
 #include <spdlog/logger.h>
 #include <spdlog/spdlog.h>
-#include <wave/Core.hpp>
 
 namespace wave {
 

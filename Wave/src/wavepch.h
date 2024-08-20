@@ -4,6 +4,7 @@
 #include <functional>
 #include <iostream>
 #include <memory>
+#include <signal.h>
 #include <sstream>
 #include <string>
 #include <unordered_map>

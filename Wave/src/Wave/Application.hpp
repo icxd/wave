@@ -1,6 +1,7 @@
 #pragma once
 
-#include <wave/Core.hpp>
+#include <Wave/Core.hpp>
+#include <Wave/Window.hpp>
 
 namespace wave {
 
@@ -10,6 +11,10 @@ public:
   virtual ~Application();
 
   void Run();
+
+private:
+  OwnRef<Window> m_window;
+  bool m_running = true;
 };
 
 Application *CreateApplication();

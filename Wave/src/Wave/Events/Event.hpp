@@ -1,6 +1,6 @@
 #pragma once
 
-#include <wave/Core.hpp>
+#include <Wave/Core.hpp>
 #include <wavepch.h>
 
 namespace wave {
