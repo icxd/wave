@@ -1,12 +1,18 @@
 file(GLOB_RECURSE WAVE_SOURCES "src/*.cpp")
 add_library(wave ${WAVE_SOURCES})
 
-target_precompile_headers(wave PRIVATE "src/wavepch.h" "src/wavepch.cpp")
-
 find_package(spdlog REQUIRED)
-target_link_libraries(wave PRIVATE spdlog::spdlog)
+find_package(glfw3 REQUIRED)
+set(OpenGL_GL_PREFERENCE GLVND)
+find_package(OpenGL REQUIRED)
 
-add_compile_definitions(WAVE_BUILD_DLL WAVE_PLATFORM_LINUX)
+target_precompile_headers(wave PRIVATE "src/wavepch.h" "src/wavepch.cpp")
+target_link_libraries(wave
+  PRIVATE spdlog::spdlog
+  PRIVATE glfw
+  PRIVATE OpenGL::GL)
+
+add_compile_definitions(WAVE_BUILD_DLL WAVE_PLATFORM_LINUX WAVE_ENABLE_ASSERTS)
 
 include_directories("src/")
 
