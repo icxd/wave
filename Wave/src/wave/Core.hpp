@@ -12,4 +12,8 @@
 #define WAVE_API
 #endif // WAVE_PLATFORM_WINDOWS
 
+#define BIT(x) (1 << x)
+
+using uint = unsigned int;
+
 template <typename T> using Ref = std::shared_ptr<T>;

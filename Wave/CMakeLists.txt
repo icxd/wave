@@ -1,6 +1,8 @@
 file(GLOB_RECURSE WAVE_SOURCES "src/*.cpp")
 add_library(wave ${WAVE_SOURCES})
 
+target_precompile_headers(wave PRIVATE "src/wavepch.h")
+
 find_package(spdlog REQUIRED)
 target_link_libraries(wave PRIVATE spdlog::spdlog)
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <spdlog/fmt/ostr.h>
 #include <spdlog/logger.h>
 #include <spdlog/spdlog.h>
 #include <wave/Core.hpp>
@@ -10,14 +11,14 @@ class WAVE_API Log {
 public:
   static void Init();
 
-  inline static Ref<spdlog::logger> &GetCoreLogger() { return s_CoreLogger; }
+  inline static Ref<spdlog::logger> &GetCoreLogger() { return s_core_logger; }
   inline static Ref<spdlog::logger> &GetClientLogger() {
-    return s_ClientLogger;
+    return s_client_logger;
   }
 
 private:
-  static Ref<spdlog::logger> s_CoreLogger;
-  static Ref<spdlog::logger> s_ClientLogger;
+  static Ref<spdlog::logger> s_core_logger;
+  static Ref<spdlog::logger> s_client_logger;
 };
 
 } // namespace wave

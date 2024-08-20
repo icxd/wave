@@ -5,17 +5,17 @@
 
 namespace wave {
 
-Ref<spdlog::logger> Log::s_CoreLogger;
-Ref<spdlog::logger> Log::s_ClientLogger;
+Ref<spdlog::logger> Log::s_core_logger;
+Ref<spdlog::logger> Log::s_client_logger;
 
 void Log::Init() {
   spdlog::set_pattern("%^[%T] %n: %v%$");
 
-  s_CoreLogger = spdlog::stdout_color_mt("WAVE");
-  s_CoreLogger->set_level(spdlog::level::trace);
+  s_core_logger = spdlog::stdout_color_mt("WAVE");
+  s_core_logger->set_level(spdlog::level::trace);
 
-  s_ClientLogger = spdlog::stdout_color_mt("APP");
-  s_ClientLogger->set_level(spdlog::level::trace);
+  s_client_logger = spdlog::stdout_color_mt("APP");
+  s_client_logger->set_level(spdlog::level::trace);
 }
 
 } // namespace wave

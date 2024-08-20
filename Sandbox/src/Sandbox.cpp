@@ -1,4 +1,3 @@
-#include "wave/Application.hpp"
 #include <Wave.hpp>
 
 class Sandbox : public wave::Application {
