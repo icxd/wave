@@ -1,9 +1,5 @@
 file(GLOB_RECURSE WAVE_SOURCES "src/*.cpp")
-add_library(wave
-  ${CMAKE_SOURCE_DIR}/vendor/glad/src/glad.c
-  ${WAVE_SOURCES})
-
-set(CMAKE_CXX_COMPILE_OPTIONS_USE_PCH -Winvalid-pch -x c++-header -include "src/wavepch.h")
+add_library(wave ${WAVE_SOURCES})
 
 find_package(spdlog REQUIRED)
 find_package(glfw3 REQUIRED)
@@ -14,7 +10,8 @@ target_precompile_headers(wave PRIVATE "src/wavepch.h" "src/wavepch.cpp")
 target_link_libraries(wave
   PRIVATE spdlog::spdlog
   PRIVATE glfw
-  PRIVATE OpenGL::GL)
+  PRIVATE OpenGL::GL
+  PRIVATE glad)
 
 add_compile_definitions(
   WAVE_BUILD_DLL 
