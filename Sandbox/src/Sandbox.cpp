@@ -1,25 +1,27 @@
 #include <GLFW/glfw3.h>
 #include <Wave.hpp>
 
-class ExampleLayer : public wave::Layer {
+using namespace wave;
+
+class ExampleLayer : public Layer {
 public:
-  ExampleLayer() : wave::Layer("Example") {}
+  ExampleLayer() : Layer("Example") {}
 
   void OnUpdate() override {
-    if (wave::Input::IsKeyPressed(GLFW_KEY_A))
+    if (Input::IsKeyPressed(KeyCode::A))
       WAVE_INFO("A key pressed!");
   }
 
-  void OnEvent(wave::Event &event) override {}
+  void OnEvent(Event &event) override {}
 };
 
-class Sandbox : public wave::Application {
+class Sandbox : public Application {
 public:
   Sandbox() {
     PushLayer(new ExampleLayer());
-    PushOverlay(new wave::ImGuiLayer);
+    PushOverlay(new ImGuiLayer);
   }
   ~Sandbox() {}
 };
 
-wave::Application *wave::CreateApplication() { return new Sandbox(); }
+Application *wave::CreateApplication() { return new Sandbox(); }
