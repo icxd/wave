@@ -10,7 +10,10 @@ public:
 
 class Sandbox : public wave::Application {
 public:
-  Sandbox() { PushLayer(new ExampleLayer()); }
+  Sandbox() {
+    PushLayer(new ExampleLayer());
+    PushOverlay(new wave::ImGuiLayer);
+  }
   ~Sandbox() {}
 };
 

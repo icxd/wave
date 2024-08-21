@@ -3,6 +3,7 @@
 #include "Wave/Events/ApplicationEvent.hpp"
 #include "Wave/Events/Event.hpp"
 #include "Wave/Layer.hpp"
+#include "Wave/Log.hpp"
 #include "Wave/Window.hpp"
 
 #include <GL/gl.h>
@@ -10,7 +11,11 @@
 
 namespace wave {
 
+Application *Application::s_instance = nullptr;
+
 Application::Application() {
+  s_instance = this;
+
   m_window = std::unique_ptr<Window>(Window::Create());
   m_window->SetEventCallback(BIND_FN(Application::OnEvent));
 }
@@ -37,9 +42,15 @@ void Application::OnEvent(Event &event) {
   }
 }
 
-void Application::PushLayer(Layer *layer) { m_layer_stack.PushLayer(layer); }
+void Application::PushLayer(Layer *layer) {
+  WAVE_CORE_INFO("pushing {}", layer->GetName());
+  m_layer_stack.PushLayer(layer);
+  layer->OnAttach();
+}
+
 void Application::PushOverlay(Layer *overlay) {
   m_layer_stack.PushOverlay(overlay);
+  overlay->OnAttach();
 }
 
 bool Application::onWindowClose(WindowCloseEvent &event) {

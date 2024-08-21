@@ -20,8 +20,14 @@ public:
   void PushLayer(Layer *layer);
   void PushOverlay(Layer *overlay);
 
+  inline static Application &Get() { return *s_instance; }
+  inline Window &GetWindow() { return *m_window; }
+
 private:
   bool onWindowClose(WindowCloseEvent &event);
+
+private:
+  static Application *s_instance;
 
 private:
   OwnRef<Window> m_window;
