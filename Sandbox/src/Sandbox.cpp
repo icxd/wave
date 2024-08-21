@@ -1,4 +1,3 @@
-#include <GLFW/glfw3.h>
 #include <Wave.hpp>
 
 using namespace wave;

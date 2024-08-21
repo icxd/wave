@@ -4,19 +4,19 @@
 namespace wave {
 
 namespace MouseButton {
-static int Button1 = 0;
-static int Button2;
-static int Button3;
-static int Button4;
-static int Button5;
-static int Button6;
-static int Button7;
-static int Button8;
+static constexpr int Button1 = 0;
+static constexpr int Button2 = 1;
+static constexpr int Button3 = 2;
+static constexpr int Button4 = 3;
+static constexpr int Button5 = 4;
+static constexpr int Button6 = 5;
+static constexpr int Button7 = 6;
+static constexpr int Button8 = 7;
 
-static int ButtonLast = Button8;
-static int ButtonLeft = Button1;
-static int ButtonRight = Button2;
-static int ButtonMiddle = Button3;
+static constexpr int ButtonLast = Button8;
+static constexpr int ButtonLeft = Button1;
+static constexpr int ButtonRight = Button2;
+static constexpr int ButtonMiddle = Button3;
 }; // namespace MouseButton
 
 } // namespace wave
