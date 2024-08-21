@@ -1,7 +1,9 @@
 file(GLOB_RECURSE WAVE_SOURCES "src/*.cpp")
 add_library(wave
-  SHARED ${WAVE_SOURCES}
-  SHARED ${CMAKE_SOURCE_DIR}/vendor/glad/src/glad.c)
+  ${CMAKE_SOURCE_DIR}/vendor/glad/src/glad.c
+  ${WAVE_SOURCES})
+
+set(CMAKE_CXX_COMPILE_OPTIONS_USE_PCH -Winvalid-pch -x c++-header -include "src/wavepch.h")
 
 find_package(spdlog REQUIRED)
 find_package(glfw3 REQUIRED)
