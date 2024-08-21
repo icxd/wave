@@ -1,11 +1,16 @@
+#include <GLFW/glfw3.h>
 #include <Wave.hpp>
 
 class ExampleLayer : public wave::Layer {
 public:
   ExampleLayer() : wave::Layer("Example") {}
 
-  void OnUpdate() override { WAVE_INFO("ExampleLayer::Update"); }
-  void OnEvent(wave::Event &event) override { WAVE_TRACE("{}", event); }
+  void OnUpdate() override {
+    if (wave::Input::IsKeyPressed(GLFW_KEY_A))
+      WAVE_INFO("A key pressed!");
+  }
+
+  void OnEvent(wave::Event &event) override {}
 };
 
 class Sandbox : public wave::Application {

@@ -32,11 +32,14 @@
 #define WAVE_CORE_ASSERT(x, ...)
 #endif // WAVE_ENABLE_ASSERTS
 
-#define BIND_FN(x) std::bind(&x, this, std::placeholders::_1)
+#define WAVE_BIND_FN(x) std::bind(&x, this, std::placeholders::_1)
 
 #define BIT(x) (1 << x)
 
+using uchar = unsigned char;
+using ushort = unsigned short;
 using uint = unsigned int;
+using ulong = unsigned long;
 
 template <typename T> using Ref = std::shared_ptr<T>;
 template <typename T> using OwnRef = std::unique_ptr<T>;
