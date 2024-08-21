@@ -5,6 +5,7 @@ find_package(spdlog REQUIRED)
 find_package(glfw3 REQUIRED)
 set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
+find_package(glm REQUIRED)
 
 target_precompile_headers(wave PRIVATE "src/wavepch.h" "src/wavepch.cpp")
 target_link_libraries(wave
@@ -12,7 +13,8 @@ target_link_libraries(wave
   PRIVATE glfw
   PRIVATE OpenGL::GL
   PRIVATE glad
-  PRIVATE imgui)
+  PRIVATE imgui
+  PRIVATE glm::glm)
 
 add_compile_definitions(
   WAVE_BUILD_DLL 
