@@ -1,2 +1,4 @@
 # Directories
+.cache/
+.ccls-cache/
 build/

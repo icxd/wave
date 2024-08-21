@@ -1,5 +1,9 @@
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
+
 #include <Platform/Linux/LinuxWindow.hpp>
+
+#include <Wave/Core.hpp>
 #include <Wave/Events/ApplicationEvent.hpp>
 #include <Wave/Events/Event.hpp>
 #include <Wave/Events/KeyEvent.hpp>
@@ -42,6 +46,8 @@ void LinuxWindow::Init(const WindowProps &props) {
   m_window = glfwCreateWindow((int)props.width, (int)props.height,
                               props.title.c_str(), nullptr, nullptr);
   glfwMakeContextCurrent(m_window);
+  int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+  WAVE_CORE_ASSERT(status, "Failed to initialize GLAD!");
   glfwSetWindowUserPointer(m_window, &m_data);
   SetVSync(true);
 

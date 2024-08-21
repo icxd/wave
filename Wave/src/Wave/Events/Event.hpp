@@ -60,8 +60,8 @@ public:
     return GetCategoryFlags() & category;
   }
 
-protected:
-  bool m_handled = false;
+public:
+  bool Handled = false;
 };
 
 class EventDispatcher {
@@ -72,7 +72,7 @@ public:
 
   template <typename T> bool Dispatch(EventFn<T> fn) {
     if (m_event.GetEventType() == T::GetStaticType()) {
-      m_event.m_handled = fn(*(T *)&m_event);
+      m_event.Handled = fn(*(T *)&m_event);
       return true;
     }
 
