@@ -20,7 +20,7 @@ public:
 
 private:
   std::vector<Layer *> m_layers;
-  std::vector<Layer *>::iterator m_layer_insert;
+  uint m_layer_insert_index = 0;
 };
 
 } // namespace wave

@@ -1,7 +1,7 @@
-#include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
 #include <Platform/Linux/LinuxWindow.hpp>
+#include <Platform/OpenGL/OpenGLContext.hpp>
 
 #include <Wave/Core.hpp>
 #include <Wave/Events/ApplicationEvent.hpp>
@@ -45,9 +45,10 @@ void LinuxWindow::Init(const WindowProps &props) {
 
   m_window = glfwCreateWindow((int)props.width, (int)props.height,
                               props.title.c_str(), nullptr, nullptr);
-  glfwMakeContextCurrent(m_window);
-  int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-  WAVE_CORE_ASSERT(status, "Failed to initialize GLAD!");
+
+  m_context = new OpenGLContext(m_window);
+  m_context->Init();
+
   glfwSetWindowUserPointer(m_window, &m_data);
   SetVSync(true);
 
@@ -132,7 +133,7 @@ void LinuxWindow::Shutdown() { glfwDestroyWindow(m_window); }
 
 void LinuxWindow::OnUpdate() {
   glfwPollEvents();
-  glfwSwapBuffers(m_window);
+  m_context->SwapBuffers();
 }
 
 void LinuxWindow::SetVSync(bool enabled) {

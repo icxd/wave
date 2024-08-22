@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
+#include <Wave/Renderer/GraphicsContext.hpp>
 #include <Wave/Window.hpp>
 #include <wavepch.h>
 
@@ -39,6 +40,7 @@ private:
 
 private:
   GLFWwindow *m_window;
+  GraphicsContext *m_context;
   WindowData m_data;
 };
 

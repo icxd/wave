@@ -8,6 +8,7 @@
 
 #include <GL/gl.h>
 #include <GLFW/glfw3.h>
+#include <memory>
 
 namespace wave {
 
@@ -18,6 +19,9 @@ Application::Application() {
 
   m_window = std::unique_ptr<Window>(Window::Create());
   m_window->SetEventCallback(WAVE_BIND_FN(Application::OnEvent));
+
+  m_imgui_layer = new ImGuiLayer;
+  PushOverlay(m_imgui_layer);
 }
 
 Application::~Application() {}
@@ -29,6 +33,11 @@ void Application::Run() {
 
     for (Layer *layer : m_layer_stack)
       layer->OnUpdate();
+
+    m_imgui_layer->Begin();
+    for (Layer *layer : m_layer_stack)
+      layer->OnImGuiRender();
+    m_imgui_layer->End();
 
     m_window->OnUpdate();
   }

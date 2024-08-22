@@ -1,4 +1,5 @@
 #include <Wave.hpp>
+#include <imgui.h>
 
 using namespace wave;
 
@@ -11,15 +12,18 @@ public:
       WAVE_INFO("A key pressed!");
   }
 
+  void OnImGuiRender() override {
+    ImGui::Begin("Test");
+    ImGui::Text("Hello, world!");
+    ImGui::End();
+  }
+
   void OnEvent(Event &event) override {}
 };
 
 class Sandbox : public Application {
 public:
-  Sandbox() {
-    PushLayer(new ExampleLayer());
-    PushOverlay(new ImGuiLayer);
-  }
+  Sandbox() { PushLayer(new ExampleLayer()); }
   ~Sandbox() {}
 };
 

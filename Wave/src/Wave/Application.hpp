@@ -2,6 +2,7 @@
 
 #include <Wave/Core.hpp>
 #include <Wave/Events/ApplicationEvent.hpp>
+#include <Wave/ImGui/ImGuiLayer.hpp>
 #include <Wave/Layer.hpp>
 #include <Wave/LayerStack.hpp>
 #include <Wave/Window.hpp>
@@ -31,6 +32,7 @@ private:
 
 private:
   OwnRef<Window> m_window;
+  ImGuiLayer *m_imgui_layer;
   bool m_running = true;
   LayerStack m_layer_stack;
 };
