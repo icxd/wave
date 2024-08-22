@@ -32,6 +32,9 @@
 #define WAVE_CORE_ASSERT(x, ...)
 #endif // WAVE_ENABLE_ASSERTS
 
+#define WAVE_UNREACHABLE() WAVE_ASSERT(false, "Unreachable code!")
+#define WAVE_CORE_UNREACHABLE() WAVE_CORE_ASSERT(false, "Unreachable code!")
+
 #define WAVE_BIND_FN(x) std::bind(&x, this, std::placeholders::_1)
 
 #define BIT(x) (1 << x)

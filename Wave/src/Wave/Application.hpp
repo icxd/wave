@@ -5,6 +5,7 @@
 #include <Wave/ImGui/ImGuiLayer.hpp>
 #include <Wave/Layer.hpp>
 #include <Wave/LayerStack.hpp>
+#include <Wave/Renderer/Buffer.hpp>
 #include <Wave/Renderer/Shader.hpp>
 #include <Wave/Window.hpp>
 
@@ -37,8 +38,10 @@ private:
   bool m_running = true;
   LayerStack m_layer_stack;
 
-  uint m_vertex_array, m_vertex_buffer, m_element_buffer;
+  uint m_vertex_array;
   OwnRef<Shader> m_shader;
+  OwnRef<VertexBuffer> m_vertex_buffer;
+  OwnRef<ElementBuffer> m_element_buffer;
 };
 
 Application *CreateApplication();
