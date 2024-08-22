@@ -6,9 +6,8 @@
 #include "Wave/Log.hpp"
 #include "Wave/Window.hpp"
 
-#include <GL/gl.h>
 #include <GLFW/glfw3.h>
-#include <memory>
+#include <glad/glad.h>
 
 namespace wave {
 
@@ -22,6 +21,26 @@ Application::Application() {
 
   m_imgui_layer = new ImGuiLayer;
   PushOverlay(m_imgui_layer);
+
+  glGenVertexArrays(1, &m_vertex_array);
+  glBindVertexArray(m_vertex_array);
+
+  glGenBuffers(1, &m_vertex_buffer);
+  glBindBuffer(GL_ARRAY_BUFFER, m_vertex_buffer);
+
+  float vertices[3 * 3] = {-0.5f, -0.5f, -0.0, 0.5f, -0.5f,
+                           -0.0,  0.0f,  0.5f, -0.0};
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+  glEnableVertexAttribArray(0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+
+  glGenBuffers(1, &m_element_buffer);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_element_buffer);
+
+  uint indices[3] = {0, 1, 2};
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
+               GL_STATIC_DRAW);
 }
 
 Application::~Application() {}
@@ -30,6 +49,9 @@ void Application::Run() {
   while (m_running) {
     glClearColor(0, 0, 0, 1);
     glClear(GL_COLOR_BUFFER_BIT);
+
+    glBindVertexArray(m_vertex_array);
+    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
 
     for (Layer *layer : m_layer_stack)
       layer->OnUpdate();

@@ -35,6 +35,8 @@ private:
   ImGuiLayer *m_imgui_layer;
   bool m_running = true;
   LayerStack m_layer_stack;
+
+  uint m_vertex_array, m_vertex_buffer, m_element_buffer;
 };
 
 Application *CreateApplication();
