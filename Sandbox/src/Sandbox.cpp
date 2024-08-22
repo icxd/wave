@@ -1,6 +1,8 @@
 #include <Platform/OpenGL/OpenGLShader.hpp>
 #include <Wave.hpp>
+#include <Wave/Renderer/PerspectiveCamera.hpp>
 #include <glm/ext/matrix_transform.hpp>
+#include <glm/ext/quaternion_float.hpp>
 #include <imgui.h>
 #include <memory>
 
@@ -9,9 +11,11 @@ using namespace Wave;
 class ExampleLayer : public Layer {
 public:
   ExampleLayer()
-      : Layer("Example"), m_camera(OrthographicCamera(-1.6f, 1.6f, -0.9, 0.9)),
+      : Layer("Example"), m_camera(PerspectiveCamera(60, 1280.0f / 720.0f)),
         m_camera_position(0.0f) {
     m_vertex_array.reset(VertexArray::Create());
+
+    m_camera.SetPosition(glm::vec3(0.0f, 0.0f, -10.0f));
 
     float vertices[5 * 4] = {
         // clang-format off
@@ -58,17 +62,28 @@ public:
     RenderCommand::Clear();
 
     {
-      if (Input::IsKeyPressed(KeyCode::Left))
+      if (Input::IsKeyPressed(KeyCode::A))
         m_camera_position.x -= m_camera_speed * ts;
-      else if (Input::IsKeyPressed(KeyCode::Right))
+      else if (Input::IsKeyPressed(KeyCode::D))
         m_camera_position.x += m_camera_speed * ts;
 
-      if (Input::IsKeyPressed(KeyCode::Down))
+      if (Input::IsKeyPressed(KeyCode::Q))
         m_camera_position.y -= m_camera_speed * ts;
-      else if (Input::IsKeyPressed(KeyCode::Up))
+      else if (Input::IsKeyPressed(KeyCode::E))
         m_camera_position.y += m_camera_speed * ts;
 
+      if (Input::IsKeyPressed(KeyCode::W))
+        m_camera_position.z -= m_camera_speed * ts;
+      else if (Input::IsKeyPressed(KeyCode::S))
+        m_camera_position.z += m_camera_speed * ts;
+
+      if (Input::IsKeyPressed(KeyCode::Left))
+        m_camera_rotation.x -= m_camera_speed * ts;
+      else if (Input::IsKeyPressed(KeyCode::Right))
+        m_camera_rotation.x += m_camera_speed * ts;
+
       m_camera.SetPosition(m_camera_position);
+      m_camera.SetRotation(m_camera_rotation);
     }
 
     auto shader = m_shader_library.Get("simple_texture");
@@ -92,8 +107,9 @@ private:
 
   Ref<Texture2D> m_texture, m_cock;
 
-  OrthographicCamera m_camera;
+  PerspectiveCamera m_camera;
   glm::vec3 m_camera_position;
+  glm::quat m_camera_rotation;
   float m_camera_speed = 1.0f;
 };
 

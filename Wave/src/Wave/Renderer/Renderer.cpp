@@ -9,7 +9,7 @@ Renderer::SceneData *Renderer::m_scene_data = new Renderer::SceneData;
 
 void Renderer::Init() { RenderCommand::Init(); }
 
-void Renderer::BeginScene(OrthographicCamera &camera) {
+void Renderer::BeginScene(PerspectiveCamera &camera) {
   m_scene_data->view_projection_matrix = camera.GetViewProjectionMatrix();
 }
 void Renderer::EndScene() {}
