@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Wave/Core.hpp>
+#include <Wave/Core/Timestep.hpp>
 #include <Wave/Events/ApplicationEvent.hpp>
 #include <Wave/ImGui/ImGuiLayer.hpp>
 #include <Wave/Layer.hpp>
@@ -39,13 +40,7 @@ private:
   ImGuiLayer *m_imgui_layer;
   bool m_running = true;
   LayerStack m_layer_stack;
-
-  Ref<Shader> m_shader;
-  Ref<VertexArray> m_vertex_array;
-  Ref<VertexBuffer> m_vertex_buffer;
-  Ref<ElementBuffer> m_element_buffer;
-
-  OrthographicCamera m_camera;
+  float m_last_frame_time = 0.0f;
 };
 
 Application *CreateApplication();
