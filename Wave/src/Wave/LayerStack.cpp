@@ -1,7 +1,7 @@
 #include <Wave/LayerStack.hpp>
 #include <wavepch.h>
 
-namespace wave {
+namespace Wave {
 
 LayerStack::LayerStack() {}
 
@@ -31,4 +31,4 @@ void LayerStack::PopOverlay(Layer *overlay) {
     m_layers.erase(it);
 }
 
-} // namespace wave
+} // namespace Wave

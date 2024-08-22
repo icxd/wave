@@ -1,6 +1,6 @@
 #pragma once
 
-namespace wave {
+namespace Wave {
 
 class GraphicsContext {
 public:
@@ -8,4 +8,4 @@ public:
   virtual void SwapBuffers() = 0;
 };
 
-} // namespace wave
+} // namespace Wave

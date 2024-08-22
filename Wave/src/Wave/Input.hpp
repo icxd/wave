@@ -2,7 +2,7 @@
 
 #include <Wave/Core.hpp>
 
-namespace wave {
+namespace Wave {
 
 class WAVE_API Input {
 public:
@@ -31,4 +31,4 @@ private:
   static Input *s_instance;
 };
 
-} // namespace wave
+} // namespace Wave

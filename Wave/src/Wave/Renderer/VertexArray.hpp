@@ -3,7 +3,7 @@
 #include <Wave/Core.hpp>
 #include <Wave/Renderer/Buffer.hpp>
 
-namespace wave {
+namespace Wave {
 
 class VertexArray {
 public:
@@ -21,4 +21,4 @@ public:
   static VertexArray *Create();
 };
 
-} // namespace wave
+} // namespace Wave

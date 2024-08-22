@@ -4,7 +4,7 @@
 
 #include <glad/glad.h>
 
-namespace wave {
+namespace Wave {
 
 OpenGLVertexBuffer::OpenGLVertexBuffer(float *vertices, uint size) {
   glCreateBuffers(1, &m_renderer_id);
@@ -42,4 +42,4 @@ void OpenGLElementBuffer::Unbind() const {
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-} // namespace wave
+} // namespace Wave

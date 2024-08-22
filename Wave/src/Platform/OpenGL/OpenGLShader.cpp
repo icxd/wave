@@ -5,10 +5,12 @@
 #include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>
 
-namespace wave {
+namespace Wave {
 
-OpenGLShader::OpenGLShader(const std::string &vertex_src,
+OpenGLShader::OpenGLShader(const std::string &name,
+                           const std::string &vertex_src,
                            const std::string &fragment_src) {
+  m_name = name;
   GLuint vertex_shader = glCreateShader(GL_VERTEX_SHADER);
 
   const GLchar *source = vertex_src.c_str();
@@ -137,4 +139,4 @@ void OpenGLShader::UploadUniformMat4(const std::string &name,
   glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
-} // namespace wave
+} // namespace Wave

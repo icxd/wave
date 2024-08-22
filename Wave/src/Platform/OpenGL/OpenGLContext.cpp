@@ -6,7 +6,7 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
-namespace wave {
+namespace Wave {
 
 void OpenGLContext::Init() {
   glfwMakeContextCurrent(m_window_handle);
@@ -21,4 +21,4 @@ void OpenGLContext::Init() {
 
 void OpenGLContext::SwapBuffers() { glfwSwapBuffers(m_window_handle); }
 
-} // namespace wave
+} // namespace Wave

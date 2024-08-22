@@ -11,7 +11,7 @@
 #include <Wave/Log.hpp>
 #include <Wave/Window.hpp>
 
-namespace wave {
+namespace Wave {
 
 static bool s_glfw_initialized = false;
 
@@ -143,4 +143,4 @@ void LinuxWindow::SetVSync(bool enabled) {
 
 bool LinuxWindow::IsVSync() const { return m_data.vsync; }
 
-} // namespace wave
+} // namespace Wave

@@ -2,7 +2,7 @@
 
 #include <Wave/Renderer/RendererAPI.hpp>
 
-namespace wave {
+namespace Wave {
 
 class RenderCommand {
 public:
@@ -22,4 +22,4 @@ private:
   static RendererAPI *s_renderer_api;
 };
 
-} // namespace wave
+} // namespace Wave

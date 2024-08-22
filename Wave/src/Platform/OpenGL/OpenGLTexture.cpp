@@ -6,7 +6,7 @@
 #include <glad/glad.h>
 #include <stb_image.h>
 
-namespace wave {
+namespace Wave {
 
 OpenGLTexture2D::OpenGLTexture2D(const std::string &path) : m_path(path) {
   int width, height, channels;
@@ -48,4 +48,4 @@ void OpenGLTexture2D::Bind(uint slot) const {
   glBindTextureUnit(slot, m_renderer_id);
 }
 
-} // namespace wave
+} // namespace Wave

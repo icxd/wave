@@ -4,7 +4,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace wave {
+namespace Wave {
 
 Input *Input::s_instance = new LinuxInput();
 
@@ -40,4 +40,4 @@ float LinuxInput::GetMouseYImpl() {
   return y;
 }
 
-} // namespace wave
+} // namespace Wave

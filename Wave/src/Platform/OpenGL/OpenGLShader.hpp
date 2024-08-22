@@ -6,15 +6,18 @@
 
 #include <string>
 
-namespace wave {
+namespace Wave {
 
 class OpenGLShader : public Shader {
 public:
-  OpenGLShader(const std::string &vertex_src, const std::string &fragment_src);
+  OpenGLShader(const std::string &name, const std::string &vertex_src,
+               const std::string &fragment_src);
   virtual ~OpenGLShader();
 
   virtual void Bind() const override;
   virtual void Unbind() const override;
+
+  virtual const std::string &GetName() const override { return m_name; }
 
   void UploadUniformInt(const std::string &name, int value);
 
@@ -28,6 +31,7 @@ public:
 
 private:
   uint m_renderer_id;
+  std::string m_name;
 };
 
-} // namespace wave
+} // namespace Wave

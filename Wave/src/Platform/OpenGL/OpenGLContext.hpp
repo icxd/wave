@@ -6,7 +6,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace wave {
+namespace Wave {
 
 class OpenGLContext : public GraphicsContext {
 public:
@@ -21,4 +21,4 @@ private:
   GLFWwindow *m_window_handle;
 };
 
-} // namespace wave
+} // namespace Wave

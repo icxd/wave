@@ -3,7 +3,7 @@
 #include <Wave/Renderer/Renderer.hpp>
 #include <memory>
 
-namespace wave {
+namespace Wave {
 
 Renderer::SceneData *Renderer::m_scene_data = new Renderer::SceneData;
 
@@ -28,4 +28,4 @@ void Renderer::Submit(const Ref<Shader> &shader,
   RenderCommand::DrawElements(vertex_array);
 }
 
-} // namespace wave
+} // namespace Wave

@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-namespace wave {
+namespace Wave {
 
 class OrthographicCamera {
 public:
@@ -39,4 +39,4 @@ private:
   float m_rotation = 0.0f;
 };
 
-} // namespace wave
+} // namespace Wave

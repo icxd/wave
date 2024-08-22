@@ -2,7 +2,7 @@
 #include <Wave/Renderer/Renderer.hpp>
 #include <Wave/Renderer/VertexArray.hpp>
 
-namespace wave {
+namespace Wave {
 
 VertexArray *VertexArray::Create() {
   switch (Renderer::GetAPI()) {
@@ -18,4 +18,4 @@ VertexArray *VertexArray::Create() {
   return nullptr;
 }
 
-} // namespace wave
+} // namespace Wave

@@ -6,7 +6,7 @@
 #include <type_traits>
 #include <wavepch.h>
 
-namespace wave {
+namespace Wave {
 
 enum class EventType {
   None = 0,
@@ -84,17 +84,17 @@ private:
   Event &m_event;
 };
 
-} // namespace wave
+} // namespace Wave
 
-inline std::ostream &operator<<(std::ostream &os, const wave::Event &event) {
+inline std::ostream &operator<<(std::ostream &os, const Wave::Event &event) {
   return os << event.ToString();
 }
 
 template <typename T>
 struct fmt::formatter<T,
-                      std::enable_if_t<std::is_base_of_v<wave::Event, T>, char>>
+                      std::enable_if_t<std::is_base_of_v<Wave::Event, T>, char>>
     : fmt::formatter<std::string> {
-  auto format(const wave::Event &event, format_context &context) const {
+  auto format(const Wave::Event &event, format_context &context) const {
     return formatter<std::string>::format(event.ToString(), context);
   }
 };

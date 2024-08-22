@@ -2,7 +2,7 @@
 
 #include <Wave/Renderer/Buffer.hpp>
 
-namespace wave {
+namespace Wave {
 
 class OpenGLVertexBuffer : public VertexBuffer {
 public:
@@ -37,4 +37,4 @@ private:
   uint m_size;
 };
 
-} // namespace wave
+} // namespace Wave

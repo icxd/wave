@@ -7,7 +7,7 @@
 #include <Wave/Events/MouseEvent.hpp>
 #include <Wave/Layer.hpp>
 
-namespace wave {
+namespace Wave {
 
 class WAVE_API ImGuiLayer : public Layer {
 public:
@@ -25,4 +25,4 @@ private:
   float m_time = 0.0f;
 };
 
-} // namespace wave
+} // namespace Wave

@@ -4,7 +4,7 @@
 #include <Wave/Events/Event.hpp>
 #include <wavepch.h>
 
-namespace wave {
+namespace Wave {
 
 class WAVE_API MouseMovedEvent : public Event {
 public:
@@ -82,4 +82,4 @@ public:
   EVENT_CLASS_TYPE(MouseButtonReleased)
 };
 
-} // namespace wave
+} // namespace Wave

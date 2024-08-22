@@ -2,7 +2,7 @@
 
 #include <Wave/Renderer/RendererAPI.hpp>
 
-namespace wave {
+namespace Wave {
 
 class OpenGLRendererAPI : public RendererAPI {
 public:
@@ -14,4 +14,4 @@ public:
   virtual void DrawElements(const Ref<VertexArray> &vertex_array) override;
 };
 
-} // namespace wave
+} // namespace Wave

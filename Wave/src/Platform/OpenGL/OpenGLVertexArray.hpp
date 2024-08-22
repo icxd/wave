@@ -4,7 +4,7 @@
 #include <Wave/Core.hpp>
 #include <Wave/Renderer/VertexArray.hpp>
 
-namespace wave {
+namespace Wave {
 
 class OpenGLVertexArray : public VertexArray {
 public:
@@ -26,4 +26,4 @@ private:
   Ref<ElementBuffer> m_element_buffer;
 };
 
-} // namespace wave
+} // namespace Wave

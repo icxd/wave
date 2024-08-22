@@ -4,7 +4,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-namespace wave {
+namespace Wave {
 
 OrthographicCamera::OrthographicCamera(float left, float right, float bottom,
                                        float top, float near, float far)
@@ -22,4 +22,4 @@ void OrthographicCamera::RecalculateViewMatrix() {
   m_view_projection_matrix = m_projection_matrix * m_view_matrix;
 }
 
-} // namespace wave
+} // namespace Wave

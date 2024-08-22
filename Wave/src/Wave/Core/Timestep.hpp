@@ -1,6 +1,6 @@
 #pragma once
 
-namespace wave {
+namespace Wave {
 
 class Timestep {
 public:
@@ -15,4 +15,4 @@ private:
   float m_time;
 };
 
-} // namespace wave
+} // namespace Wave

@@ -4,7 +4,7 @@
 #include <Wave/Renderer/Renderer.hpp>
 #include <Wave/Renderer/Texture.hpp>
 
-namespace wave {
+namespace Wave {
 
 Ref<Texture2D> Texture2D::Create(const std::string &path) {
   switch (Renderer::GetAPI()) {
@@ -20,4 +20,4 @@ Ref<Texture2D> Texture2D::Create(const std::string &path) {
   return nullptr;
 }
 
-} // namespace wave
+} // namespace Wave

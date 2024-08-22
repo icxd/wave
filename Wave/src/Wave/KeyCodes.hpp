@@ -1,6 +1,6 @@
 #pragma once
 
-namespace wave {
+namespace Wave {
 
 namespace KeyCode {
 static constexpr int Space = 32;
@@ -125,4 +125,4 @@ static constexpr int RightSuper = 347;
 static constexpr int Menu = 348;
 }; // namespace KeyCode
 
-} // namespace wave
+} // namespace Wave

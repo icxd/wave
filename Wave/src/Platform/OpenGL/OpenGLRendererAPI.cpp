@@ -2,7 +2,7 @@
 
 #include <glad/glad.h>
 
-namespace wave {
+namespace Wave {
 
 void OpenGLRendererAPI::Init() {
   glEnable(GL_BLEND);
@@ -21,4 +21,4 @@ void OpenGLRendererAPI::DrawElements(const Ref<VertexArray> &vertex_array) {
                  GL_UNSIGNED_INT, nullptr);
 }
 
-} // namespace wave
+} // namespace Wave

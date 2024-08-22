@@ -5,7 +5,7 @@
 #include <Wave/Window.hpp>
 #include <wavepch.h>
 
-namespace wave {
+namespace Wave {
 
 class LinuxWindow : public Window {
 public:
@@ -44,4 +44,4 @@ private:
   WindowData m_data;
 };
 
-} // namespace wave
+} // namespace Wave

@@ -3,7 +3,7 @@
 
 #include <Platform/OpenGL/OpenGLRendererAPI.hpp>
 
-namespace wave {
+namespace Wave {
 
 RendererAPI *RenderCommand::s_renderer_api = new OpenGLRendererAPI;
 

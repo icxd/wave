@@ -3,14 +3,14 @@
 #include <Wave/Application.hpp>
 #include <Wave/Log.hpp>
 
-extern wave::Application *wave::CreateApplication();
+extern Wave::Application *Wave::CreateApplication();
 
 #ifdef WAVE_PLATFORM_WINDOWS
 #error Windows is not supported yet
 #else
 int main(int argc, char *argv[]) {
-  wave::Log::Init();
-  auto app = wave::CreateApplication();
+  Wave::Log::Init();
+  auto app = Wave::CreateApplication();
   app->Run();
   delete app;
 }

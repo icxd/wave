@@ -10,7 +10,7 @@
 #include <imgui.h>
 #include <wavepch.h>
 
-namespace wave {
+namespace Wave {
 
 void ImGuiLayer::OnAttach() {
   IMGUI_CHECKVERSION();
@@ -69,4 +69,4 @@ void ImGuiLayer::End() {
   }
 }
 
-} // namespace wave
+} // namespace Wave

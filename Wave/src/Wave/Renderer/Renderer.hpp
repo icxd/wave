@@ -8,7 +8,7 @@
 
 #include <glm/glm.hpp>
 
-namespace wave {
+namespace Wave {
 
 class Renderer {
 public:
@@ -31,4 +31,4 @@ private:
   static SceneData *m_scene_data;
 };
 
-} // namespace wave
+} // namespace Wave

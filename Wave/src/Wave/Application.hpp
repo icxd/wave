@@ -12,7 +12,7 @@
 #include <Wave/Renderer/VertexArray.hpp>
 #include <Wave/Window.hpp>
 
-namespace wave {
+namespace Wave {
 
 class WAVE_API Application {
 public:
@@ -45,4 +45,4 @@ private:
 
 Application *CreateApplication();
 
-} // namespace wave
+} // namespace Wave

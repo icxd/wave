@@ -12,7 +12,7 @@
 #include <Wave/Renderer/VertexArray.hpp>
 #include <Wave/Window.hpp>
 
-namespace wave {
+namespace Wave {
 
 Application *Application::s_instance = nullptr;
 
@@ -77,4 +77,4 @@ bool Application::onWindowClose(WindowCloseEvent &event) {
   return true;
 }
 
-} // namespace wave
+} // namespace Wave

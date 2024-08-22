@@ -1,5 +1,6 @@
 #pragma once
 
+#include <filesystem>
 #include <memory>
 #include <vector>
 
@@ -40,7 +41,7 @@
 
 #define BIT(x) (1 << x)
 
-namespace wave {
+namespace Wave {
 
 using uchar = unsigned char;
 using ushort = unsigned short;
@@ -51,4 +52,6 @@ template <typename T> using Ref = std::shared_ptr<T>;
 template <typename T> using Scope = std::unique_ptr<T>;
 template <typename T> using Vec = std::vector<T>;
 
-} // namespace wave
+using FilePath = std::filesystem::path;
+
+} // namespace Wave

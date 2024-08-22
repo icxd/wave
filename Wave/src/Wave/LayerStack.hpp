@@ -3,7 +3,7 @@
 #include <Wave/Core.hpp>
 #include <Wave/Layer.hpp>
 
-namespace wave {
+namespace Wave {
 
 class WAVE_API LayerStack {
 public:
@@ -23,4 +23,4 @@ private:
   uint m_layer_insert_index = 0;
 };
 
-} // namespace wave
+} // namespace Wave

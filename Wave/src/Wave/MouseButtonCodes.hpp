@@ -1,7 +1,7 @@
 
 #pragma once
 
-namespace wave {
+namespace Wave {
 
 namespace MouseButton {
 static constexpr int Button1 = 0;
@@ -19,4 +19,4 @@ static constexpr int ButtonRight = Button2;
 static constexpr int ButtonMiddle = Button3;
 }; // namespace MouseButton
 
-} // namespace wave
+} // namespace Wave

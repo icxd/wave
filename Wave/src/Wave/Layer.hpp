@@ -4,7 +4,7 @@
 #include <Wave/Core/Timestep.hpp>
 #include <Wave/Events/Event.hpp>
 
-namespace wave {
+namespace Wave {
 
 class WAVE_API Layer {
 public:
@@ -23,4 +23,4 @@ protected:
   std::string m_debug_name;
 };
 
-} // namespace wave
+} // namespace Wave

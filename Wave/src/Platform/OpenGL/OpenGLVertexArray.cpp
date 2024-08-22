@@ -3,7 +3,7 @@
 
 #include <glad/glad.h>
 
-namespace wave {
+namespace Wave {
 
 static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type) {
   // clang-format off
@@ -70,4 +70,4 @@ const Ref<ElementBuffer> &OpenGLVertexArray::GetElementBuffer() const {
   return m_element_buffer;
 }
 
-} // namespace wave
+} // namespace Wave

@@ -2,7 +2,7 @@
 
 #include <Wave/Input.hpp>
 
-namespace wave {
+namespace Wave {
 
 class LinuxInput : public Input {
 protected:
@@ -14,4 +14,4 @@ protected:
   virtual float GetMouseYImpl() override;
 };
 
-} // namespace wave
+} // namespace Wave

@@ -3,7 +3,7 @@
 #include <Wave/Core.hpp>
 #include <Wave/Log.hpp>
 
-namespace wave {
+namespace Wave {
 
 enum class ShaderDataType {
   // clang-format off
@@ -134,4 +134,4 @@ public:
   static ElementBuffer *Create(uint *elements, uint size);
 };
 
-} // namespace wave
+} // namespace Wave

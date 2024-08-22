@@ -4,7 +4,7 @@
 #include <imgui.h>
 #include <memory>
 
-using namespace wave;
+using namespace Wave;
 
 class ExampleLayer : public Layer {
 public:
@@ -37,15 +37,16 @@ public:
         ElementBuffer::Create(elements, sizeof(elements) / sizeof(uint)));
     m_vertex_array->SetElementBuffer(m_element_buffer);
 
-    m_shader.reset(Shader::Create("../Sandbox/assets/shaders/simple_texture"));
+    auto shader =
+        m_shader_library.Load("../Sandbox/assets/shaders/simple_texture");
 
     // FIXME: fix working directory
     m_texture =
         Texture2D::Create("../Sandbox/assets/textures/Checkerboard.png");
     m_cock = Texture2D::Create("../Sandbox/assets/textures/cock.png");
 
-    std::dynamic_pointer_cast<OpenGLShader>(m_shader)->Bind();
-    std::dynamic_pointer_cast<OpenGLShader>(m_shader)->UploadUniformInt(
+    std::dynamic_pointer_cast<OpenGLShader>(shader)->Bind();
+    std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformInt(
         "u_Texture", 0);
   }
 
@@ -70,19 +71,21 @@ public:
       m_camera.SetPosition(m_camera_position);
     }
 
+    auto shader = m_shader_library.Get("simple_texture");
+
     Renderer::BeginScene(m_camera);
 
     m_texture->Bind();
-    Renderer::Submit(m_shader, m_vertex_array);
+    Renderer::Submit(shader, m_vertex_array);
 
     m_cock->Bind();
-    Renderer::Submit(m_shader, m_vertex_array);
+    Renderer::Submit(shader, m_vertex_array);
 
     Renderer::EndScene();
   }
 
 private:
-  Ref<Shader> m_shader;
+  ShaderLibrary m_shader_library;
   Ref<VertexArray> m_vertex_array;
   Ref<VertexBuffer> m_vertex_buffer;
   Ref<ElementBuffer> m_element_buffer;
@@ -100,4 +103,4 @@ public:
   ~Sandbox() {}
 };
 
-Application *wave::CreateApplication() { return new Sandbox(); }
+Application *Wave::CreateApplication() { return new Sandbox(); }

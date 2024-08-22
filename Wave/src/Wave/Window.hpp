@@ -4,7 +4,7 @@
 #include <Wave/Events/Event.hpp>
 #include <wavepch.h>
 
-namespace wave {
+namespace Wave {
 
 struct WindowProps {
   std::string title = "WAVE Engine";
@@ -31,4 +31,4 @@ public:
   static Window *Create(const WindowProps &props = WindowProps{});
 };
 
-} // namespace wave
+} // namespace Wave

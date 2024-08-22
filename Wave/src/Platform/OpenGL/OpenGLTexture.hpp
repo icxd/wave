@@ -2,7 +2,7 @@
 
 #include <Wave/Renderer/Texture.hpp>
 
-namespace wave {
+namespace Wave {
 
 class OpenGLTexture2D : public Texture2D {
 public:
@@ -20,4 +20,4 @@ private:
   uint m_renderer_id;
 };
 
-} // namespace wave
+} // namespace Wave

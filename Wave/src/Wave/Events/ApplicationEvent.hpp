@@ -4,7 +4,7 @@
 #include <Wave/Events/Event.hpp>
 #include <wavepch.h>
 
-namespace wave {
+namespace Wave {
 
 class WAVE_API WindowResizeEvent : public Event {
 public:
@@ -59,4 +59,4 @@ public:
   EVENT_CLASS_CATEGORY(EventCategoryApplication)
 };
 
-} // namespace wave
+} // namespace Wave

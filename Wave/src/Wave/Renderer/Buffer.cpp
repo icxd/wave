@@ -4,7 +4,7 @@
 #include <Wave/Renderer/Buffer.hpp>
 #include <Wave/Renderer/Renderer.hpp>
 
-namespace wave {
+namespace Wave {
 
 VertexBuffer *VertexBuffer::Create(float *vertices, uint size) {
   switch (Renderer::GetAPI()) {
@@ -34,4 +34,4 @@ ElementBuffer *ElementBuffer::Create(uint *elements, uint size) {
   return nullptr;
 }
 
-} // namespace wave
+} // namespace Wave

@@ -3,7 +3,7 @@
 #include <Wave/Renderer/VertexArray.hpp>
 #include <glm/glm.hpp>
 
-namespace wave {
+namespace Wave {
 
 class RendererAPI {
 public:
@@ -26,4 +26,4 @@ private:
   static API s_api;
 };
 
-} // namespace wave
+} // namespace Wave

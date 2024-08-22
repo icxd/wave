@@ -2,7 +2,7 @@
 
 #include <Wave/Core.hpp>
 
-namespace wave {
+namespace Wave {
 
 class Texture {
 public:
@@ -21,4 +21,4 @@ public:
   static Ref<Texture2D> Create(const std::string &path);
 };
 
-} // namespace wave
+} // namespace Wave
