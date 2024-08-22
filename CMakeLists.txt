@@ -9,5 +9,6 @@ set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/vendor/imgui)
 
 add_subdirectory(vendor/glad)
 add_subdirectory(vendor/imgui)
+add_subdirectory(vendor/stb_image)
 add_subdirectory(Wave)
 add_subdirectory(Sandbox)

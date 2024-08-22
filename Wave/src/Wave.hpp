@@ -19,6 +19,7 @@
 
 #include <Wave/Renderer/Buffer.hpp>
 #include <Wave/Renderer/Shader.hpp>
+#include <Wave/Renderer/Texture.hpp>
 #include <Wave/Renderer/VertexArray.hpp>
 
 #include <Wave/Renderer/OrthographicCamera.hpp>

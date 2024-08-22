@@ -1,21 +1,26 @@
 #pragma once
 
-#include <glm/glm.hpp>
+#include <string>
 
 namespace wave {
 
 class Shader {
 public:
-  Shader(const std::string &vertex_src, const std::string &fragment_src);
-  ~Shader();
+  virtual ~Shader() = default;
 
-  void Bind() const;
-  void Unbind() const;
+  virtual void Bind() const = 0;
+  virtual void Unbind() const = 0;
 
-  void UploadUniformMat4(const std::string &name, const glm::mat4 &matrix);
-
-private:
-  uint m_renderer_id;
+  static Shader *Create(const std::string &vertex_src,
+                        const std::string &fragment_src);
+  /**
+   * @brief Create a Shader using the path to the shader file, without the
+   * extension
+   *
+   * @param path Path to the shader file, no extension
+   * @return Shader* Raw pointer to the new shader object
+   */
+  static Shader *Create(const std::string &path);
 };
 
 } // namespace wave

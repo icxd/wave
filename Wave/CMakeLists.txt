@@ -14,6 +14,7 @@ target_link_libraries(wave
   PRIVATE OpenGL::GL
   PRIVATE glad
   PRIVATE imgui
+  PRIVATE stb_image
   PRIVATE glm::glm)
 
 add_compile_definitions(
@@ -26,7 +27,8 @@ add_compile_definitions(
 include_directories(
   "src/"
   "${CMAKE_SOURCE_DIR}/vendor/glad/include/"
-  "${CMAKE_SOURCE_DIR}/vendor/imgui/")
+  "${CMAKE_SOURCE_DIR}/vendor/imgui/"
+  "${CMAKE_SOURCE_DIR}/vendor/stb_image/")
 
 # install(TARGETS wave
 #     LIBRARY DESTINATION lib

@@ -36,7 +36,7 @@ private:
   static Application *s_instance;
 
 private:
-  OwnRef<Window> m_window;
+  Scope<Window> m_window;
   ImGuiLayer *m_imgui_layer;
   bool m_running = true;
   LayerStack m_layer_stack;

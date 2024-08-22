@@ -40,11 +40,15 @@
 
 #define BIT(x) (1 << x)
 
+namespace wave {
+
 using uchar = unsigned char;
 using ushort = unsigned short;
 using uint = unsigned int;
 using ulong = unsigned long;
 
 template <typename T> using Ref = std::shared_ptr<T>;
-template <typename T> using OwnRef = std::unique_ptr<T>;
+template <typename T> using Scope = std::unique_ptr<T>;
 template <typename T> using Vec = std::vector<T>;
+
+} // namespace wave

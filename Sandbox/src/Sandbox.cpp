@@ -1,100 +1,100 @@
+#include "Wave/Log.hpp"
+#include <Platform/OpenGL/OpenGLShader.hpp>
 #include <Wave.hpp>
+#include <filesystem>
 #include <imgui.h>
+#include <memory>
 
-using namespace wave;
-
-class ExampleLayer : public Layer {
+class ExampleLayer : public wave::Layer {
 public:
   ExampleLayer()
-      : Layer("Example"), m_camera(OrthographicCamera(-1.6f, 1.6f, -0.9, 0.9)),
+      : Layer("Example"),
+        m_camera(wave::OrthographicCamera(-1.6f, 1.6f, -0.9, 0.9)),
         m_camera_position(0.0f) {
-    m_vertex_array.reset(VertexArray::Create());
+    m_vertex_array.reset(wave::VertexArray::Create());
 
-    float vertices[3 * 3] = {-0.5f, -0.5f, -0.0, 0.5f, -0.5f,
-                             -0.0,  0.0f,  0.5f, -0.0};
+    float vertices[5 * 4] = {
+        // clang-format off
+      -0.5f, -0.5f, -0.0f,    0.0f, 0.0f,
+       0.5f, -0.5f, -0.0f,    1.0f, 0.0f,
+       0.5f,  0.5f, -0.0f,    1.0f, 1.0f,
+      -0.5f,  0.5f,  0.0f,    0.0f, 1.0f,
+        // clang-format on
+    };
 
-    m_vertex_buffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+    m_vertex_buffer.reset(
+        wave::VertexBuffer::Create(vertices, sizeof(vertices)));
 
-    BufferLayout layout = {
-        {ShaderDataType::Float3, "a_Position"},
+    wave::BufferLayout layout = {
+        {wave::ShaderDataType::Float3, "a_Position"},
+        {wave::ShaderDataType::Float2, "a_TexCoord"},
     };
 
     m_vertex_buffer->SetLayout(layout);
     m_vertex_array->AddVertexBuffer(m_vertex_buffer);
 
-    uint elements[3] = {0, 1, 2};
+    uint elements[6] = {0, 1, 2, 2, 3, 0};
     m_element_buffer.reset(
-        ElementBuffer::Create(elements, sizeof(elements) / sizeof(uint)));
+        wave::ElementBuffer::Create(elements, sizeof(elements) / sizeof(uint)));
     m_vertex_array->SetElementBuffer(m_element_buffer);
 
-    std::string vertex_source = R"(
-#version 330 core
+    m_shader.reset(
+        wave::Shader::Create("../Sandbox/assets/shaders/simple_texture"));
 
-layout(location = 0) in vec3 a_Position;
+    std::filesystem::path path = std::filesystem::current_path();
+    WAVE_INFO("Current working directory: {}", path.c_str());
 
-uniform mat4 u_ViewProjection;
-
-out vec3 v_Position;
-
-void main() {
-  v_Position = a_Position;
-  gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
-}
-  )";
-    std::string fragment_source = R"(
-#version 330 core
-
-layout(location = 0) out vec4 color;
-
-in vec3 v_Position;
-
-void main() {
-  color = vec4(v_Position * 0.5 + 0.5, 1.0);
-}
-  )";
-
-    m_shader.reset(new Shader(vertex_source, fragment_source));
+    // FIXME: fix working directory
+    m_texture =
+        wave::Texture2D::Create("../Sandbox/assets/textures/Checkerboard.png");
+    std::dynamic_pointer_cast<wave::OpenGLShader>(m_shader)->Bind();
+    std::dynamic_pointer_cast<wave::OpenGLShader>(m_shader)->UploadUniformInt(
+        "u_Texture", 0);
   }
 
-  void OnUpdate(Timestep ts) override {
+  void OnUpdate(wave::Timestep ts) override {
     // WAVE_TRACE("delta time: {}s ({}ms)", ts.GetSeconds(),
     // ts.GetMilliseconds());
 
-    RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1.0f});
-    RenderCommand::Clear();
+    wave::RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1.0f});
+    wave::RenderCommand::Clear();
 
-    if (Input::IsKeyPressed(KeyCode::Left))
+    if (wave::Input::IsKeyPressed(wave::KeyCode::Left))
       m_camera_position.x -= m_camera_speed * ts;
-    else if (Input::IsKeyPressed(KeyCode::Right))
+    else if (wave::Input::IsKeyPressed(wave::KeyCode::Right))
       m_camera_position.x += m_camera_speed * ts;
 
-    if (Input::IsKeyPressed(KeyCode::Down))
+    if (wave::Input::IsKeyPressed(wave::KeyCode::Down))
       m_camera_position.y -= m_camera_speed * ts;
-    else if (Input::IsKeyPressed(KeyCode::Up))
+    else if (wave::Input::IsKeyPressed(wave::KeyCode::Up))
       m_camera_position.y += m_camera_speed * ts;
 
     m_camera.SetPosition(m_camera_position);
 
-    Renderer::BeginScene(m_camera);
-    Renderer::Submit(m_shader, m_vertex_array);
-    Renderer::EndScene();
+    wave::Renderer::BeginScene(m_camera);
+
+    m_texture->Bind();
+    wave::Renderer::Submit(m_shader, m_vertex_array);
+
+    wave::Renderer::EndScene();
   }
 
 private:
-  Ref<Shader> m_shader;
-  Ref<VertexArray> m_vertex_array;
-  Ref<VertexBuffer> m_vertex_buffer;
-  Ref<ElementBuffer> m_element_buffer;
+  wave::Ref<wave::Shader> m_shader;
+  wave::Ref<wave::VertexArray> m_vertex_array;
+  wave::Ref<wave::VertexBuffer> m_vertex_buffer;
+  wave::Ref<wave::ElementBuffer> m_element_buffer;
+  wave::Ref<wave::Texture2D> m_texture;
 
-  OrthographicCamera m_camera;
+  wave::OrthographicCamera m_camera;
   glm::vec3 m_camera_position;
   float m_camera_speed = 1.0f;
 };
 
-class Sandbox : public Application {
+class Sandbox : public wave::Application {
 public:
   Sandbox() { PushLayer(new ExampleLayer()); }
   ~Sandbox() {}
 };
 
-Application *wave::CreateApplication() { return new Sandbox(); }
+wave::Application *wave::CreateApplication() { return new Sandbox(); }
