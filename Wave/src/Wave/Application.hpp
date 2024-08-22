@@ -5,6 +5,7 @@
 #include <Wave/ImGui/ImGuiLayer.hpp>
 #include <Wave/Layer.hpp>
 #include <Wave/LayerStack.hpp>
+#include <Wave/Renderer/Shader.hpp>
 #include <Wave/Window.hpp>
 
 namespace wave {
@@ -37,6 +38,7 @@ private:
   LayerStack m_layer_stack;
 
   uint m_vertex_array, m_vertex_buffer, m_element_buffer;
+  OwnRef<Shader> m_shader;
 };
 
 Application *CreateApplication();
