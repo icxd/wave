@@ -1,18 +1,31 @@
 #pragma once
 
-namespace wave {
+#include <Wave/Renderer/OrthographicCamera.hpp>
+#include <Wave/Renderer/RenderCommand.hpp>
+#include <Wave/Renderer/RendererAPI.hpp>
+#include <Wave/Renderer/Shader.hpp>
+#include <Wave/Renderer/VertexArray.hpp>
 
-enum class RendererAPI {
-  None = 0,
-  OpenGL = 1,
-};
+#include <glm/glm.hpp>
+
+namespace wave {
 
 class Renderer {
 public:
-  inline static RendererAPI GetAPI() { return s_renderer_api; }
+  static void BeginScene(OrthographicCamera &camera);
+  static void EndScene();
+
+  static void Submit(const Ref<Shader> &shader,
+                     const Ref<VertexArray> &vertex_array);
+
+  inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 
 private:
-  static RendererAPI s_renderer_api;
+  struct SceneData {
+    glm::mat4 view_projection_matrix;
+  };
+
+  static SceneData *m_scene_data;
 };
 
 } // namespace wave

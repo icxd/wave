@@ -20,7 +20,8 @@ add_compile_definitions(
   WAVE_BUILD_DLL 
   WAVE_PLATFORM_LINUX 
   WAVE_ENABLE_ASSERTS 
-  GLFW_INCLUDE_NONE)
+  GLFW_INCLUDE_NONE
+  GLM_FORCE_CTOR_INIT)
 
 include_directories(
   "src/"

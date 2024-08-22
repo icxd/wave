@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 #ifdef WAVE_PLATFORM_WINDOWS
 #ifdef WAVE_BUILD_DLL
@@ -46,3 +47,4 @@ using ulong = unsigned long;
 
 template <typename T> using Ref = std::shared_ptr<T>;
 template <typename T> using OwnRef = std::unique_ptr<T>;
+template <typename T> using Vec = std::vector<T>;

@@ -8,11 +8,11 @@ namespace wave {
 
 VertexBuffer *VertexBuffer::Create(float *vertices, uint size) {
   switch (Renderer::GetAPI()) {
-  case RendererAPI::None:
+  case RendererAPI::API::None:
     WAVE_CORE_ASSERT(false, "RendererAPI::None is not currently supported")
     return nullptr;
 
-  case RendererAPI::OpenGL:
+  case RendererAPI::API::OpenGL:
     return new OpenGLVertexBuffer(vertices, size);
   }
 
@@ -22,11 +22,11 @@ VertexBuffer *VertexBuffer::Create(float *vertices, uint size) {
 
 ElementBuffer *ElementBuffer::Create(uint *elements, uint size) {
   switch (Renderer::GetAPI()) {
-  case RendererAPI::None:
+  case RendererAPI::API::None:
     WAVE_CORE_ASSERT(false, "RendererAPI::None is not currently supported")
     return nullptr;
 
-  case RendererAPI::OpenGL:
+  case RendererAPI::API::OpenGL:
     return new OpenGLElementBuffer(elements, size);
   }
 

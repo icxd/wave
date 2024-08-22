@@ -6,7 +6,9 @@
 #include <Wave/Layer.hpp>
 #include <Wave/LayerStack.hpp>
 #include <Wave/Renderer/Buffer.hpp>
+#include <Wave/Renderer/OrthographicCamera.hpp>
 #include <Wave/Renderer/Shader.hpp>
+#include <Wave/Renderer/VertexArray.hpp>
 #include <Wave/Window.hpp>
 
 namespace wave {
@@ -38,10 +40,12 @@ private:
   bool m_running = true;
   LayerStack m_layer_stack;
 
-  uint m_vertex_array;
-  OwnRef<Shader> m_shader;
-  OwnRef<VertexBuffer> m_vertex_buffer;
-  OwnRef<ElementBuffer> m_element_buffer;
+  Ref<Shader> m_shader;
+  Ref<VertexArray> m_vertex_array;
+  Ref<VertexBuffer> m_vertex_buffer;
+  Ref<ElementBuffer> m_element_buffer;
+
+  OrthographicCamera m_camera;
 };
 
 Application *CreateApplication();

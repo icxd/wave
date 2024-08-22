@@ -81,21 +81,17 @@ public:
     CalculateOffsetAndStride();
   }
 
-  inline const std::vector<BufferElement> &GetElements() const {
-    return m_elements;
-  }
+  inline const Vec<BufferElement> &GetElements() const { return m_elements; }
 
   inline uint GetStride() const { return m_stride; }
 
-  std::vector<BufferElement>::iterator begin() { return m_elements.begin(); }
-  std::vector<BufferElement>::iterator end() { return m_elements.end(); }
+  Vec<BufferElement>::iterator begin() { return m_elements.begin(); }
+  Vec<BufferElement>::iterator end() { return m_elements.end(); }
 
-  std::vector<BufferElement>::const_iterator begin() const {
+  Vec<BufferElement>::const_iterator begin() const {
     return m_elements.begin();
   }
-  std::vector<BufferElement>::const_iterator end() const {
-    return m_elements.end();
-  }
+  Vec<BufferElement>::const_iterator end() const { return m_elements.end(); }
 
 private:
   void CalculateOffsetAndStride() {
@@ -109,7 +105,7 @@ private:
   }
 
 private:
-  std::vector<BufferElement> m_elements;
+  Vec<BufferElement> m_elements;
   uint m_stride = 0;
 };
 
