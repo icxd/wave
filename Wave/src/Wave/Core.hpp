@@ -17,14 +17,14 @@
 #define WAVE_ASSERT(x, ...)                                                    \
   {                                                                            \
     if (!(x)) {                                                                \
-      WAVE_ERROR("Assertion failed! {0}", __VA_ARGS__);                        \
+      WAVE_ERROR("Assertion failed! {}", __VA_ARGS__);                         \
       raise(SIGTRAP);                                                          \
     }                                                                          \
   }
 #define WAVE_CORE_ASSERT(x, ...)                                               \
   {                                                                            \
     if (!(x)) {                                                                \
-      WAVE_CORE_ERROR("Assertion failed! {0}", __VA_ARGS__);                   \
+      WAVE_CORE_ERROR("Assertion failed! {}", __VA_ARGS__);                    \
       raise(SIGTRAP);                                                          \
     }                                                                          \
   }

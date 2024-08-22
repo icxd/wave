@@ -3,6 +3,9 @@ add_executable(sandbox ${SANDBOX_SOURCES})
 
 find_package(spdlog REQUIRED)
 
+set(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Sandbox)
+message(STATUS "Working directory: ${WORKING_DIRECTORY}")
+
 add_compile_definitions(WAVE_PLATFORM_LINUX)
 
 include_directories(${CMAKE_SOURCE_DIR}/Wave/src)

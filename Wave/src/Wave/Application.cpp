@@ -22,6 +22,8 @@ Application::Application() {
   m_window = std::unique_ptr<Window>(Window::Create());
   m_window->SetEventCallback(WAVE_BIND_FN(Application::OnEvent));
 
+  Renderer::Init();
+
   m_imgui_layer = new ImGuiLayer;
   PushOverlay(m_imgui_layer);
 }
