@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Wave/Renderer/PerspectiveCamera.hpp>
+#include <Wave/Renderer/Camera.hpp>
 #include <Wave/Renderer/RenderCommand.hpp>
 #include <Wave/Renderer/RendererAPI.hpp>
 #include <Wave/Renderer/Shader.hpp>
@@ -14,7 +14,7 @@ class Renderer {
 public:
   static void Init();
 
-  static void BeginScene(PerspectiveCamera &camera);
+  static void BeginScene(const Ref<Camera> &camera);
   static void EndScene();
 
   static void Submit(const Ref<Shader> &shader,

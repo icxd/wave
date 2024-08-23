@@ -11,18 +11,19 @@ using namespace Wave;
 class ExampleLayer : public Layer {
 public:
   ExampleLayer()
-      : Layer("Example"), m_camera(PerspectiveCamera(60, 1280.0f / 720.0f)),
+      : Layer("Example"),
+        // m_camera(Camera::CreatePerspective(60, 1280.0f / 720.0f))
+        m_camera(Camera::CreateOrtho(-1.6, 1.6, -0.9, 0.9)),
         m_camera_position(0.0f) {
     m_vertex_array.reset(VertexArray::Create());
 
-    m_camera.SetPosition(glm::vec3(0.0f, 0.0f, -10.0f));
-
     float vertices[5 * 4] = {
         // clang-format off
-      -0.5f, -0.5f, -0.0f,    0.0f, 0.0f,
-       0.5f, -0.5f, -0.0f,    1.0f, 0.0f,
-       0.5f,  0.5f, -0.0f,    1.0f, 1.0f,
-      -0.5f,  0.5f,  0.0f,    0.0f, 1.0f,
+        // Vertex Pos           Texture Coord
+        -0.5f, -0.5f, -0.0f,    0.0f, 0.0f,
+         0.5f, -0.5f, -0.0f,    1.0f, 0.0f,
+         0.5f,  0.5f, -0.0f,    1.0f, 1.0f,
+        -0.5f,  0.5f,  0.0f,    0.0f, 1.0f,
         // clang-format on
     };
 
@@ -82,8 +83,8 @@ public:
       else if (Input::IsKeyPressed(KeyCode::Right))
         m_camera_rotation.x += m_camera_speed * ts;
 
-      m_camera.SetPosition(m_camera_position);
-      m_camera.SetRotation(m_camera_rotation);
+      m_camera->SetPosition(m_camera_position);
+      m_camera->SetRotation(m_camera_rotation);
     }
 
     auto shader = m_shader_library.Get("simple_texture");
@@ -107,7 +108,7 @@ private:
 
   Ref<Texture2D> m_texture, m_cock;
 
-  PerspectiveCamera m_camera;
+  Ref<Camera> m_camera;
   glm::vec3 m_camera_position;
   glm::quat m_camera_rotation;
   float m_camera_speed = 1.0f;

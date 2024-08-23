@@ -22,7 +22,9 @@
 #include <Wave/Renderer/Texture.hpp>
 #include <Wave/Renderer/VertexArray.hpp>
 
+#include <Wave/Renderer/Camera.hpp>
 #include <Wave/Renderer/OrthographicCamera.hpp>
+#include <Wave/Renderer/PerspectiveCamera.hpp>
 // -------------------------------------
 
 // ------ ENTRY POINT ------------------

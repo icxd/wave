@@ -14,9 +14,9 @@ OrthographicCamera::OrthographicCamera(float left, float right, float bottom,
 }
 
 void OrthographicCamera::RecalculateViewMatrix() {
-  glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_position);
-  transform =
-      glm::rotate(transform, glm::radians(m_rotation), glm::vec3(0, 0, 1));
+  glm::mat4 rotation_matrix = glm::mat4_cast(m_rotation);
+  glm::mat4 transform =
+      glm::translate(glm::mat4(1.0f), m_position) * rotation_matrix;
 
   m_view_matrix = glm::inverse(transform);
   m_view_projection_matrix = m_projection_matrix * m_view_matrix;
