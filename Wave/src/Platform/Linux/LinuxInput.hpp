@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Wave/Input.hpp>
+#include <Wave/Core/Input.hpp>
 
 namespace Wave {
 

@@ -1,9 +1,8 @@
 #pragma once
 
-#include <Wave/Core.hpp>
+#include <Wave/Core/Core.hpp>
 #include <fmt/core.h>
 #include <fmt/format.h>
-#include <type_traits>
 #include <wavepch.h>
 
 namespace Wave {
@@ -49,7 +48,7 @@ enum EventCategory {
   virtual int GetCategoryFlags() const override { return category; }
 
 class WAVE_API Event {
-  friend class EventDispatcher;
+  friend class EventObserver;
 
 public:
   virtual EventType GetEventType() const = 0;
@@ -65,13 +64,13 @@ public:
   bool Handled = false;
 };
 
-class EventDispatcher {
+class EventObserver {
   template <typename T> using EventFn = std::function<bool(T &)>;
 
 public:
-  EventDispatcher(Event &event) : m_event(event) {}
+  EventObserver(Event &event) : m_event(event) {}
 
-  template <typename T> bool Dispatch(EventFn<T> fn) {
+  template <typename T> bool Observe(EventFn<T> fn) {
     if (m_event.GetEventType() == T::GetStaticType()) {
       m_event.Handled = fn(*(T *)&m_event);
       return true;

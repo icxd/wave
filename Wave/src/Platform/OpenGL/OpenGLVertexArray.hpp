@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Wave/Renderer/Buffer.hpp"
-#include <Wave/Core.hpp>
+#include <Wave/Core/Core.hpp>
+#include <Wave/Renderer/Buffer.hpp>
 #include <Wave/Renderer/VertexArray.hpp>
 
 namespace Wave {

@@ -1,6 +1,6 @@
 #include <GLFW/glfw3.h>
-#include <Wave/Application.hpp>
-#include <Wave/Core.hpp>
+#include <Wave/Core/Application.hpp>
+#include <Wave/Core/Core.hpp>
 #include <Wave/Events/Event.hpp>
 #include <Wave/Events/MouseEvent.hpp>
 #include <Wave/ImGui/ImGuiLayer.hpp>

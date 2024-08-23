@@ -3,13 +3,13 @@
 #include <Platform/Linux/LinuxWindow.hpp>
 #include <Platform/OpenGL/OpenGLContext.hpp>
 
-#include <Wave/Core.hpp>
+#include <Wave/Core/Core.hpp>
+#include <Wave/Core/Log.hpp>
+#include <Wave/Core/Window.hpp>
 #include <Wave/Events/ApplicationEvent.hpp>
 #include <Wave/Events/Event.hpp>
 #include <Wave/Events/KeyEvent.hpp>
 #include <Wave/Events/MouseEvent.hpp>
-#include <Wave/Log.hpp>
-#include <Wave/Window.hpp>
 
 namespace Wave {
 

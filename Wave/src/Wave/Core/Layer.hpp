@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Wave/Core.hpp>
+#include <Wave/Core/Core.hpp>
 #include <Wave/Core/Timestep.hpp>
 #include <Wave/Events/Event.hpp>
 

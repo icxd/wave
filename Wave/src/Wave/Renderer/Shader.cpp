@@ -1,6 +1,6 @@
 #include <Platform/OpenGL/OpenGLShader.hpp>
 
-#include <Wave/Core.hpp>
+#include <Wave/Core/Core.hpp>
 #include <Wave/Renderer/Renderer.hpp>
 #include <Wave/Renderer/Shader.hpp>
 

@@ -1,5 +1,5 @@
-#include "Wave/Core.hpp"
 #include <Platform/OpenGL/OpenGLVertexArray.hpp>
+#include <Wave/Core/Core.hpp>
 
 #include <glad/glad.h>
 

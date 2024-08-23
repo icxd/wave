@@ -1,6 +1,6 @@
 #include <Platform/OpenGL/OpenGLBuffer.hpp>
-#include <Wave/Core.hpp>
-#include <Wave/Log.hpp>
+#include <Wave/Core/Core.hpp>
+#include <Wave/Core/Log.hpp>
 #include <Wave/Renderer/Buffer.hpp>
 #include <Wave/Renderer/Renderer.hpp>
 

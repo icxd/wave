@@ -1,16 +1,16 @@
 #include <GLFW/glfw3.h>
-#include <Wave/Application.hpp>
-#include <Wave/Core.hpp>
+#include <Wave/Core/Application.hpp>
+#include <Wave/Core/Core.hpp>
+#include <Wave/Core/Layer.hpp>
+#include <Wave/Core/Log.hpp>
+#include <Wave/Core/Window.hpp>
 #include <Wave/Events/ApplicationEvent.hpp>
 #include <Wave/Events/Event.hpp>
-#include <Wave/Layer.hpp>
-#include <Wave/Log.hpp>
 #include <Wave/Renderer/Buffer.hpp>
 #include <Wave/Renderer/OrthographicCamera.hpp>
 #include <Wave/Renderer/RenderCommand.hpp>
 #include <Wave/Renderer/Renderer.hpp>
 #include <Wave/Renderer/VertexArray.hpp>
-#include <Wave/Window.hpp>
 
 namespace Wave {
 
@@ -36,8 +36,9 @@ void Application::Run() {
     Timestep timestep = time - m_last_frame_time;
     m_last_frame_time = time;
 
-    for (Layer *layer : m_layer_stack)
-      layer->OnUpdate(timestep);
+    if (!m_minimized)
+      for (Layer *layer : m_layer_stack)
+        layer->OnUpdate(timestep);
 
     m_imgui_layer->Begin();
     for (Layer *layer : m_layer_stack)
@@ -49,9 +50,10 @@ void Application::Run() {
 }
 
 void Application::OnEvent(Event &event) {
-  EventDispatcher dispatcher(event);
-  dispatcher.Dispatch<WindowCloseEvent>(
-      WAVE_BIND_FN(Application::onWindowClose));
+  EventObserver observer(event);
+  observer.Observe<WindowCloseEvent>(WAVE_BIND_FN(Application::OnWindowClose));
+  observer.Observe<WindowResizeEvent>(
+      WAVE_BIND_FN(Application::OnWindowResize));
 
   for (auto it = m_layer_stack.end(); it != m_layer_stack.begin();) {
     (*--it)->OnEvent(event);
@@ -72,9 +74,21 @@ void Application::PushOverlay(Layer *overlay) {
   overlay->OnAttach();
 }
 
-bool Application::onWindowClose(WindowCloseEvent &event) {
+bool Application::OnWindowClose(WindowCloseEvent &event) {
   m_running = false;
   return true;
+}
+
+bool Application::OnWindowResize(WindowResizeEvent &event) {
+  if (event.GetWidth() == 0 || event.GetHeight() == 0) {
+    m_minimized = true;
+    return true;
+  }
+
+  m_minimized = false;
+  Renderer::OnWindowResize(event.GetWidth(), event.GetHeight());
+
+  return false;
 }
 
 } // namespace Wave

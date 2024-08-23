@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Wave/Core.hpp>
+#include <Wave/Core/Core.hpp>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
@@ -10,6 +10,9 @@ namespace Wave {
 class Camera {
 public:
   virtual ~Camera() = default;
+
+  virtual void SetProjection(float left, float right, float bottom,
+                             float top) = 0;
 
   virtual const glm::vec3 &GetPosition() const = 0;
   virtual void SetPosition(const glm::vec3 &position) = 0;

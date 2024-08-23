@@ -1,5 +1,5 @@
 #include <Platform/Linux/LinuxInput.hpp>
-#include <Wave/Application.hpp>
+#include <Wave/Core/Application.hpp>
 #include <wavepch.h>
 
 #include <GLFW/glfw3.h>

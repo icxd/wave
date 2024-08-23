@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Wave/Core.hpp>
-#include <Wave/Log.hpp>
+#include <Wave/Core/Core.hpp>
+#include <Wave/Core/Log.hpp>
 
 namespace Wave {
 

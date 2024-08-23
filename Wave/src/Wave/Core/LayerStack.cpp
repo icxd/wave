@@ -1,4 +1,4 @@
-#include <Wave/LayerStack.hpp>
+#include <Wave/Core/LayerStack.hpp>
 #include <wavepch.h>
 
 namespace Wave {

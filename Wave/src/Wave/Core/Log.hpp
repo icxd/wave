@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Wave/Core.hpp>
+#include <Wave/Core/Core.hpp>
 #include <spdlog/fmt/ostr.h>
 #include <spdlog/logger.h>
 #include <spdlog/spdlog.h>

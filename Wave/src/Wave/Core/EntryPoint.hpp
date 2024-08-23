@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Wave/Application.hpp>
-#include <Wave/Log.hpp>
+#include <Wave/Core/Application.hpp>
+#include <Wave/Core/Log.hpp>
 
 extern Wave::Application *Wave::CreateApplication();
 

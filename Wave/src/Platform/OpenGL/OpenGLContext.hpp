@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Wave/Core.hpp>
-#include <Wave/Log.hpp>
+#include <Wave/Core/Core.hpp>
+#include <Wave/Core/Log.hpp>
 #include <Wave/Renderer/GraphicsContext.hpp>
 
 #include <GLFW/glfw3.h>

@@ -1,5 +1,5 @@
-#include <Wave/Core.hpp>
-#include <Wave/Log.hpp>
+#include <Wave/Core/Core.hpp>
+#include <Wave/Core/Log.hpp>
 
 #include <Platform/OpenGL/OpenGLTexture.hpp>
 

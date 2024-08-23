@@ -1,8 +1,8 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
+#include <Wave/Core/Window.hpp>
 #include <Wave/Renderer/GraphicsContext.hpp>
-#include <Wave/Window.hpp>
 #include <wavepch.h>
 
 namespace Wave {

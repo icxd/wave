@@ -9,6 +9,10 @@ Renderer::SceneData *Renderer::m_scene_data = new Renderer::SceneData;
 
 void Renderer::Init() { RenderCommand::Init(); }
 
+void Renderer::OnWindowResize(uint width, uint height) {
+  RenderCommand::SetViewport(0, 0, width, height);
+}
+
 void Renderer::BeginScene(const Ref<Camera> &camera) {
   m_scene_data->view_projection_matrix = camera->GetViewProjectionMatrix();
 }

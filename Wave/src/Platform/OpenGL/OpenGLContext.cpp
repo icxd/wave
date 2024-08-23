@@ -1,4 +1,4 @@
-#include <Wave/Log.hpp>
+#include <Wave/Core/Log.hpp>
 #include <wavepch.h>
 
 #include <Platform/OpenGL/OpenGLContext.hpp>

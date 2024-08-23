@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Wave/Core.hpp>
+#include <Wave/Core/Core.hpp>
 #include <Wave/Renderer/Buffer.hpp>
 
 namespace Wave {

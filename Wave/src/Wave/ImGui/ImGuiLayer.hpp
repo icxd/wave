@@ -1,11 +1,11 @@
 #pragma once
 
-#include <Wave/Core.hpp>
+#include <Wave/Core/Core.hpp>
+#include <Wave/Core/Layer.hpp>
 #include <Wave/Events/ApplicationEvent.hpp>
 #include <Wave/Events/Event.hpp>
 #include <Wave/Events/KeyEvent.hpp>
 #include <Wave/Events/MouseEvent.hpp>
-#include <Wave/Layer.hpp>
 
 namespace Wave {
 

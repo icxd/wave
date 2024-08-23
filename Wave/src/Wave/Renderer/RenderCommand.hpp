@@ -8,6 +8,10 @@ class RenderCommand {
 public:
   inline static void Init() { s_renderer_api->Init(); }
 
+  inline static void SetViewport(uint x, uint y, uint width, uint height) {
+    s_renderer_api->SetViewport(x, y, width, height);
+  }
+
   inline static void SetClearColor(const glm::vec4 &color) {
     s_renderer_api->SetClearColor(color);
   }

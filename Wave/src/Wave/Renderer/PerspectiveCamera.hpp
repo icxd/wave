@@ -13,6 +13,9 @@ public:
   PerspectiveCamera(float fov, float aspect_ratio, float near = 0.1f,
                     float far = 100.0f);
 
+  virtual void SetProjection(float left, float right, float bottom,
+                             float top) override;
+
   virtual const glm::vec3 &GetPosition() const override { return m_position; }
   virtual void SetPosition(const glm::vec3 &position) override {
     m_position = position;

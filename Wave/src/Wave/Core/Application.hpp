@@ -1,16 +1,16 @@
 #pragma once
 
-#include <Wave/Core.hpp>
+#include <Wave/Core/Core.hpp>
+#include <Wave/Core/Layer.hpp>
+#include <Wave/Core/LayerStack.hpp>
 #include <Wave/Core/Timestep.hpp>
+#include <Wave/Core/Window.hpp>
 #include <Wave/Events/ApplicationEvent.hpp>
 #include <Wave/ImGui/ImGuiLayer.hpp>
-#include <Wave/Layer.hpp>
-#include <Wave/LayerStack.hpp>
 #include <Wave/Renderer/Buffer.hpp>
 #include <Wave/Renderer/OrthographicCamera.hpp>
 #include <Wave/Renderer/Shader.hpp>
 #include <Wave/Renderer/VertexArray.hpp>
-#include <Wave/Window.hpp>
 
 namespace Wave {
 
@@ -30,7 +30,8 @@ public:
   inline Window &GetWindow() { return *m_window; }
 
 private:
-  bool onWindowClose(WindowCloseEvent &event);
+  bool OnWindowClose(WindowCloseEvent &event);
+  bool OnWindowResize(WindowResizeEvent &event);
 
 private:
   static Application *s_instance;
@@ -38,7 +39,7 @@ private:
 private:
   Scope<Window> m_window;
   ImGuiLayer *m_imgui_layer;
-  bool m_running = true;
+  bool m_running = true, m_minimized = false;
   LayerStack m_layer_stack;
   float m_last_frame_time = 0.0f;
 };

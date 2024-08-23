@@ -1,6 +1,6 @@
 #include <Platform/OpenGL/OpenGLShader.hpp>
 #include <Wave.hpp>
-#include <Wave/Log.hpp>
+#include <Wave/Core/Log.hpp>
 
 #include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>

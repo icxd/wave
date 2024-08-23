@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Wave/Core.hpp>
-#include <Wave/Layer.hpp>
+#include <Wave/Core/Core.hpp>
+#include <Wave/Core/Layer.hpp>
 
 namespace Wave {
 

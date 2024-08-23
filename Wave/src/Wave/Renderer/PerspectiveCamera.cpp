@@ -15,6 +15,9 @@ PerspectiveCamera::PerspectiveCamera(float fov, float aspect_ratio, float near,
   RecalculateViewMatrix();
 }
 
+void PerspectiveCamera::SetProjection(float left, float right, float bottom,
+                                      float top) {}
+
 void PerspectiveCamera::RecalculateViewMatrix() {
   glm::mat4 rotation_matrix = glm::mat4_cast(m_rotation);
   glm::mat4 transform =
